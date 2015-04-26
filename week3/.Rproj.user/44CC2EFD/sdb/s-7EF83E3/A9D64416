@@ -1,14 +1,14 @@
 {
-    "contents" : "#download data\ndownload.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",destfile=\"data.zip\")\nunzip(\"./data.zip\")\n#read the dataset\npm25<- readRDS(\"./summarySCC_PM25.rds\")\nscc<- readRDS(\"./Source_Classification_Code.rds\")\n\n#total emission in Baltimore\ntotal_Baltimore<-with(pm25[pm25$fips==\"24510\",], aggregate(Emissions, list(year), \"sum\"))\n\nlibrary(dplyr)\n(total_Baltimore, )",
+    "contents" : "library(dplyr)\nlibrary(ggplot2)\n#download data\ndownload.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",destfile=\"data.zip\")\nunzip(\"./data.zip\")\n#read the dataset\npm25<- readRDS(\"./summarySCC_PM25.rds\")\nscc<- readRDS(\"./Source_Classification_Code.rds\")\n\n#emission of Baltimore city only\npm25_BC<-pm25[pm25$fips==\"24510\",]\n\ntemp<-pm25_BC %>% group_by(type, year) %>% summarize(total=sum(Emissions))\npng(\"plot3-2.png\")\nggplot(temp, aes(year, total, color=type))+geom_line()\ndev.off()",
     "created" : 1430087384431.000,
     "dirty" : true,
-    "encoding" : "",
+    "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "249201373",
+    "hash" : "1462704812",
     "id" : "A9D64416",
-    "lastKnownWriteTime" : 1,
-    "path" : null,
-    "project_path" : null,
+    "lastKnownWriteTime" : 1430088114,
+    "path" : "E:/SkyDrive/Courses achive/ExploratoryDataAnalysis-Coursera/week3/plot3-2.R",
+    "project_path" : "plot3-2.R",
     "properties" : {
         "tempName" : "Untitled1"
     },
