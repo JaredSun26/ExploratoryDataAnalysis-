@@ -1,0 +1,17 @@
+{
+    "contents" : "#download data\ndownload.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",destfile=\"data.zip\")\nunzip(\"./data.zip\")\n#read the dataset\npm25<- readRDS(\"./summarySCC_PM25.rds\")\nscc<- readRDS(\"./Source_Classification_Code.rds\")\n\n#find the scc corresponding to coal combustion\nfips_coal<-grep(pattern=\"coal\", scc$Short.Name, ignore.case=TRUE,value=TRUE)\n\n#find the pm25 emissions related with coal combustion\n",
+    "created" : 1430083600347.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1236591294",
+    "id" : "A6BF67E",
+    "lastKnownWriteTime" : 147428528,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
