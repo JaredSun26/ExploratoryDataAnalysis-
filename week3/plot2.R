@@ -6,7 +6,7 @@ pm25<- readRDS("./summarySCC_PM25.rds")
 scc<- readRDS("./Source_Classification_Code.rds")
 
 #total emission in Baltimore
-total_Baltimore<-with(pm25[pm25$fips=="24510",], aggregate(Emissions, list(total=year), "sum"))
+total_Baltimore<-with(pm25[pm25$fips=="24510",], aggregate(Emissions, list(year=year, total=total), "sum"))
 
 #plot
 png("./plot2.png")
