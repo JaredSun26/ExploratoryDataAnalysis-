@@ -11,4 +11,6 @@ scc<- readRDS("./Source_Classification_Code.rds")
 pm25_BC<-pm25[pm25$fips=="24510",]
 
 temp<-pm25_BC %>% group_by(type, year) %>% summarize(total=sum(Emissions))
+png("plot3-2.png")
 ggplot(temp, aes(year, total, color=type))+geom_line()
+dev.off()
