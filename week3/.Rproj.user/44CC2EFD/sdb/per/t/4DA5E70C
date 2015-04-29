@@ -1,0 +1,17 @@
+{
+    "contents" : "library(ggplot2)\nlibrary(dplyr)\n#download data\ndownload.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",destfile=\"data.zip\")\nunzip(\"./data.zip\")\n#read the dataset\npm25<- readRDS(\"./summarySCC_PM25.rds\")\nscc<- readRDS(\"./Source_Classification_Code.rds\")\n\n#emission of Baltimore city only\npm25_BC<-filter(pm25,fips==\"24510\")%>% group_by(type,year)%>%summarise(totalEmissions=sum(Emissions))\n\n\n#plot\npng(\"plot3.png\")\ng<-ggplot(pm25_BC, aes(year, totalEmissions, color=type))\ng+geom_line()\ndev.off()\n",
+    "created" : 1430348865217.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3972649389",
+    "id" : "4DA5E70C",
+    "lastKnownWriteTime" : 1430349208,
+    "path" : "E:/SkyDrive/Courses achive/ExploratoryDataAnalysis-Coursera/week3/plot3.R",
+    "project_path" : "plot3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
